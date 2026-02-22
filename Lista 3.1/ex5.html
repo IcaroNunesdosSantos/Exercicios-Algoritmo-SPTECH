@@ -6,6 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    
+    Insira quantas horas você dormiu: <input type="text" id="ipt_hrsDormidas"><br><br>
+
+    <button onclick="hrsDormidas()">Calcular Sono</button>
+
+    <div id="div_exibir"></div>
+
 </body>
 </html>
+
+<script>
+    function hrsDormidas(){
+        let hrsDormidas = Number(ipt_hrsDormidas.value);
+
+        let fs1 = hrsDormidas * 5 / 100;
+        let fs2 = hrsDormidas * 45 / 100;
+        let fs3 = hrsDormidas * 30 / 100;
+        let rem = hrsDormidas * 20 / 100;
+
+        div_exibir.innerHTML = `Ao dormir ${hrsDormidas} horas, você dormiu: <br>
+                                ${fs1} horas na fase 1 <br>
+                                ${fs2} horas na fase 2 <br>
+                                ${fs3} horas na fase 3 <br>
+                                ${rem} horas na fase REM.`
+    }
+</script>
