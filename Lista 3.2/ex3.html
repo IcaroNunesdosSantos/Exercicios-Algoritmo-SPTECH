@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o valor recebido com a venda das peças: <br>
+    <input type="text" id="ipt_valorPeca"><br>
+    Informe o valor recebido com a venda dos Serviços: <br>
+    <input type="text" id="ipt_valorServicos"> <br>
+    Informe o percentual de impostos sobre os valores recebidos: <br>
+    <input type="text" id="ipt_valorImposto"> <br>
+    Informe o valor dos gastos recebidos no mês: <br>
+    <input type="text" id="ipt_gastos"> <br>
+
+    <button onclick="acumular()">Acumular</button> <br>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let mes = 0;
+    let recebidos = 0;
+    let imposto = 0;
+    let acumulo = 0;
+
+    function acumular(){
+        mes += 1
+        recebidos = Number(ipt_valorPeca.value) + Number(ipt_valorServicos.value);
+        imposto = recebidos * Number(ipt_valorImposto.value) / 100;
+        saldoFinal = recebidos - Number(ipt_gastos.value) - imposto;
+        acumulo = acumulo + saldoFinal;
+        div_exibir.innerHTML = div_exibir.innerHTML + `Resumo do mês ${mes} <br>
+                                                       Total recebido = R$${recebidos} <br>
+                                                       Valor do Imposto = R$${imposto} <br>
+                                                       Saldo Final de R$${saldoFinal} <br>
+                                                       Acumulado até o Momento = R$${acumulo} R$ <br><br><br>`
+    }
+</script>
