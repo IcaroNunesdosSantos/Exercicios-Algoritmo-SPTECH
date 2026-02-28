@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantos KWh são consumidos no mês: <input type="text" id="ipt_kwh">
+
+    <button onclick="calculoKwh()">Calcular conta do mês</button>
+</body>
+</html>
+
+<script>
+
+    function calculoKwh(){
+        let kwh = Number(ipt_kwh.value);
+        let valorConta = kwh * 0.85;
+        
+        if (kwh < 100){
+           let valorDesconto = valorConta * 90 / 100;
+           
+           //let porcentagem = valorConta * 10 / 100;
+           //let valorDesconto = valorConta - porcentagem;
+            
+           alert(`Valor da conta: R$${valorDesconto}`);
+        }else {
+            alert(`Valor da conta: R$${valorConta}`);
+        }
+
+
+        
+
+    }
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe a última série sitcom que você assistiu: <input type="text" id="ipt_sitcom"> <br><br>
+    Informe a quantidade de episódios que você já assistiu dessa série: <input type="text" id="ipt_qtdEpisodios"><br><br>
+
+    <button onclick="verificarNivel()">Verificar Nível</button> <br><br>
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+    function verificarNivel(){
+        let sitcom = ipt_sitcom.value;
+        let qtdEpisodios = Number(ipt_qtdEpisodios.value);
+        let verificarNivel = qtdEpisodios * 22;
+        let horas = verificarNivel / 60;
+        div_exibir.innerHTML = `Vejo que você gosta da série ${sitcom}`;
+
+        if(horas > 30){
+            div_exibir.innerHTML += `<br> Uau, você realmente gosta dessa série!`
+        }
+        
+    }
+</script>

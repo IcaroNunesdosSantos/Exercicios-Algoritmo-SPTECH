@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Insira a quantidade de latinhas que você toma por dia: <br>
+    <input type="text" id="ipt_qtdLatinhas">
+
+    <button onclick="qtdRefris()">Quantos refris?</button>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+    function qtdRefris(){
+        let qtsLatinhaAno = Number(ipt_qtdLatinhas.value) * 365;
+
+        div_exibir.innerHTML = `Quantidade de latinhas por ano: ${qtsLatinhaAno}`
+        if(qtsLatinhaAno >= 500){
+            div_exibir.innerHTML = div_exibir.innerHTML + `<br> Cuidado com a diabetes!`
+        }
+    }
+
+</script>
