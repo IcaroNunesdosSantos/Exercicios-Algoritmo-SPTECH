@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o primeiro numero: <input type="text" id="ipt_numero1"><br><br>
+    Informe o segundo numero: <input type="text" id="ipt_numero2"><br><br>
+
+    <button onclick="verificar()">Testar</button><br><br>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+    function verificar(){
+        let n1 = Number(ipt_numero1.value);
+        let n2 = Number(ipt_numero2.value);
+
+        if(n1 % n2 == 0){
+            div_exibir.innerHTML = `<img src="https://media.istockphoto.com/id/1514093059/pt/vetorial/thumbs-up-hand-emoji-icon-illustration-sign-human-gesture-vector-symbol-emoticon-design.jpg?s=612x612&w=0&k=20&c=LkxKK5MGJZwygSjj_JtFAro65PWsjqU5xXBXt2IaZWU=">`;
+        }else{
+            div_exibir.innerHTML = `<img src="https://www.cocel.com.br/wp-content/uploads/2018/03/falso.jpg">`;
+        }
+    }
+
+</script>

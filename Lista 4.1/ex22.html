@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe a temperatura do ambiente(ºC): <input type="text" id="ipt_temperatura"> <br><br>
+    <button onclick="verificarClima()">Verificar clima</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verificarClima(){
+        let temperatura = Number(ipt_temperatura.value);
+
+        if(temperatura >= 10){
+         div_exibir.innerHTML = `Inapropriado p/ conservar alimento <br>
+         <img src="https://thumbs.dreamstime.com/b/alimentos-podres-estragados-com-bolores-ma%C3%A7%C3%A3s-piment%C3%A3o-queijo-duro-e-ban%C3%A3o-sobre-fundo-cinzento-fechar-em-213040301.jpg">`   
+        }else{
+            div_exibir.innerHTML = `Apropriado p/ conservar alimento <br>
+            <img src="https://www.correiobraziliense.com.br/cbradar/wp-content/uploads/2025/07/alimentos_1751738028481.jpg">`
+        }
+    }
+</script>
