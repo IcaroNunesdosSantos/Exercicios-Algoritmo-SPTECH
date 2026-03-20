@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Insira o peso da criança: <br>
+    <input type="text" id="ipt_peso"> <br><br>
+    <button onclick="analisePeso()">Analisar peso</button> <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function analisePeso(){
+        let peso = Number(ipt_peso.value);
+
+        if(peso <= 13.5){
+            div_mensagem.innerHTML = `Abaixo do peso`;
+        }else if(peso <= 21.2){
+            if(peso == 18.3){
+                div_mensagem.innerHTML = `Peso Perfeito`;
+            }else{
+                div_mensagem.innerHTML = `Peso na média`;
+            }
+        }else {
+            div_mensagem.innerHTML = `Acima do peso`;
+
+        }
+
+    }
+
+</script>

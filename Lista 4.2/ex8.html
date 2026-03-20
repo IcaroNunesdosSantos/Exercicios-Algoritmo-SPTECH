@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Qual sua meta de economia: <br>
+    <input type="text" id="ipt_eco"> <br><br>
+
+    Quanto tem guardado: <br>
+    <input type="text" id="ipt_guardado"> <br><br>
+
+    <button onclick="economia()">Analisar economia</button> <br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function economia(){
+        let eco = Number(ipt_eco.value);
+        let guardado = Number(ipt_guardado.value);
+        let dif = eco - guardado;
+        let ultra = guardado - eco;
+
+        if(eco == guardado){
+            div_mensagem.innerHTML = `Parabéns, meta alcançada`
+        }else if(guardado >= eco){
+            div_mensagem.innerHTML = `Parabéns, meta alcançada`
+            div_mensagem.innerHTML += `<br> Meta ultrapassada em ${ultra.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
+        }else{
+            div_mensagem.innerHTML = `Força! Ainda em busca da meta! Falta ${dif.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+        }
+
+    }
+
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Qual dos seguintes times você torce (São Paulo, Palmeiras, Corinthians, Santos): <input type="text" id="ipt_time"><br><br>
+    <button onclick="fale()">fale sobre esse time</button> <br><br>
+    <div id="div_mensagem"></div>
+
+    
+    
+    
+</body>
+</html>
+
+<script>
+
+    function fale(){
+        let time = ipt_time.value;
+
+        if(time == "São Paulo"){
+            div_mensagem.innerHTML = `<span style="color: red; background-color: black;">Salve o Tricolor paulista</span>`
+        }else if(time == "Corinthians"){
+            div_mensagem.innerHTML = `<span style="color: white; background-color: black;">Salve o Corinthians</span>`
+        }else if(time == "Palmeiras"){
+            div_mensagem.innerHTML = `<span style="color: white; background-color: green;">Salve o Alviverde imponente</span>`
+        }else if(time == "Santos"){
+            div_mensagem.innerHTML = `Agora quem dá a bola é o Santos`
+        }else {
+            div_mensagem.innerHTML = ''
+        }
+    }
+
+</script>

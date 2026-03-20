@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_number"> <br><br>
+    <button onclick="resto()">Múltiplo de 5</button> <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function resto(){
+        let num = Number(ipt_number.value);
+
+        if(num < 0){
+            alert("Digite um número maior que zero");
+        }
+
+        if(num % 5 == 0){
+            div_mensagem.innerHTML = `Perfeito, esse número é múltiplo de cinco`
+        }else if(num % 5 == 1){
+            div_mensagem.innerHTML = `Vich, sobrou um`
+        }else if(num % 5 == 2){
+            div_mensagem.innerHTML = `Para esse o resto é dois`
+        }else if(num % 5 == 3){
+            div_mensagem.innerHTML = `Com mais dois daria certo`
+        }else if(num % 5 == 4){
+            div_mensagem.innerHTML = `Só faltou 1 para ser múltiplo de 5`
+        }
+        
+    }
+
+</script>

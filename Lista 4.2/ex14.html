@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .mensagem span{
+        font-size: 50px;
+        
+    }
+</style>
+<body>
+
+    Como está se sentindo hoje? <br>
+    <select name="emocao" id="emocao">
+        <option>Selecione uma opção</option>
+        <option value="feliz">Feliz</option>
+        <option value="triste">Triste</option>
+        <option value="bravo">Bravo</option>
+        <option value="surpreso">Surpreso</option>
+        <option value="cansado">Cansado</option>
+    </select>
+
+    <button onclick="humor()">Mostrar Humor</button> <br><br>
+
+    <div class="mensagem" id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function humor(){
+        let humor = emocao.value;
+
+        console.log(humor);
+
+        if(humor == 'Selecione uma opção'){
+            alert('erro')
+        }else{
+            
+            if(humor == 'feliz'){
+                div_mensagem.innerHTML = `<span>😊</span>`
+            }else if(humor == 'triste'){
+                div_mensagem.innerHTML = `<span>😢</span>`
+            }else if(humor == 'bravo'){
+                div_mensagem.innerHTML = `<span>😡</span>`
+            }else if(humor == 'surpreso'){
+                div_mensagem.innerHTML = `<span>😮</span>`
+            }else {
+                div_mensagem.innerHTML = `<span>😴</span>`
+            }
+
+        }
+
+
+    }
+
+</script>
