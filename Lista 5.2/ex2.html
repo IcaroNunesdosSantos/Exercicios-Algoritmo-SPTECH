@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #div_mensagem img{
+        width: 500px;
+        height: 500px;
+    }
+</style>
+
+<body>
+    Informe o tamanho da tela do celular: <br>
+    <input type="text" id="ipt_tamTela"> <br><br>
+
+    <select id="corCelular">
+        <option value="preto">Preto</option>
+        <option value="prata">Prata</option>
+        <option value="azul">Azul</option>
+        <option value="vermelho">Vermelho</option>
+    </select>
+
+    <button onclick="verificar()">Será que ele gosta?</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+
+    function verificar(){
+        let tamTela = Number(ipt_tamTela.value);
+        let cor = corCelular.value;
+
+        if(tamTela > 6.5 && (cor == 'preto' || cor == 'prata')){
+            div_mensagem.innerHTML = `<img src="https://img.freepik.com/vetores-premium/vetor-de-uma-pessoa-alegre-de-cabelos-encaracolados-com-um-estilo-de-design-plano-simples-e-minimalista_995281-45483.jpg" alt="">`
+        }else {
+            div_mensagem.innerHTML = `<img src="https://img.freepik.com/vetores-gratis/projeto-de-depressao-de-um-homem_24908-82007.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        }
+    }
+
+</script>

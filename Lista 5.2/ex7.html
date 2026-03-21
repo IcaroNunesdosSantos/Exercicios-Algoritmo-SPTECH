@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Login:
+    <input type="text" id="ipt_login"> <br><br>
+
+    senha:
+    <input type="text" id="ipt_senha"> <br><br>
+
+    informação pessoal:
+    <input type="text" id="ipt_infoPessoal"> <br><br>
+
+    <button onclick="autenticar()">Autenticar</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let tentativas = 3;
+    let usuario = 0; // 1 Significa que o usuario está bloqueado, 0 significa que ele não está bloqueado;
+    
+    function autenticar(){
+        let login = ipt_login.value;
+        let senha = ipt_senha.value;
+        let infoPessoal = ipt_infoPessoal.value;
+
+        if(usuario == 0){
+            if(login == 'ana' && senha == 'braga' && (infoPessoal == '1949' || infoPessoal == 'louro josé')){
+                console.log('Autenticado');
+                div_mensagem.innerHTML = `<span style="color: green;">Usuário autenticado</span>`
+                tentativas = 3;
+            }else {
+                div_mensagem.innerHTML = `<span style="color: red;"> Falha na autenticação </span>`
+                if(tentativas > 0 && tentativas <= 3){
+                    tentativas -= 1;
+                    div_mensagem.innerHTML += `<br>Você ainda tem ${tentativas} tentativas(s)`
+                }
+            }
+            if(tentativas == 0){
+                div_mensagem.innerHTML = `Usuário BLOQUEADO! Procure seu gerente!` 
+                usuario += 1; 
+            }
+
+        }
+        
+
+    }
+
+</script>
