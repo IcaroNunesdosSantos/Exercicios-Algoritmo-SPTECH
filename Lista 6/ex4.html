@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Comparador de Palavras</h1>
+
+    Palavra 1: <input type="text" id="ipt_p1" /> <br /><br />
+    Palavra 2: <input type="text" id="ipt_p2" /> <br /><br />
+
+    <button onclick="analisar()">Analisar Palavras</button>
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let mensagem = "";
+    let p1 = ipt_p1.value;
+    let p2 = ipt_p2.value;
+
+    let caixaBaixa = p1.toLowerCase();
+    let caixaBaixa2 = p2.toLowerCase();
+
+    if (p1 === p2) {
+      console.log("iguais");
+      mensagem = `As palavras ${p1} e ${p2} são exatamente iguais!`;
+    } else if (caixaBaixa === caixaBaixa2) {
+      console.log("iguais de forma diferente");
+      mensagem = `As palavras ${p1} e ${p2} possuem o mesmo conteúdo, mas a digitação é diferente (maiúsculas e minúsculas)`;
+    } else {
+      console.log("diferentes");
+      mensagem = `As palavras ${p1} e ${p2} são completamente diferentes!`;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

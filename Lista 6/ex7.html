@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .nivel1{
+            color: white;
+            background-color: red;
+        }
+        .nivel2{
+            color: white;
+            background-color: yellow;
+        }
+        .nivel3{
+            color: white;
+            background-color: green;
+        }
+        #div_mensagem{
+            margin: 10px;
+            font-size: 25px;
+        }
+    </style>
+  </head>
+  <body>
+    Informe sua senha: <input type="text" id="ipt_senha" oninput="senha()" />
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+    let nivel = 'Insegura';
+    div_mensagem.innerHTML = nivel;
+  function senha() {
+    let criterios = 0;
+    let senha = ipt_senha.value;
+
+    let caixaBaixa = senha.toLowerCase();
+    let caixaAlta = senha.toUpperCase();
+
+    let tamSenha = senha.length;
+
+    if (tamSenha >= 8) {
+      criterios++;
+    }
+    if (senha != caixaBaixa) {
+      criterios++;
+    }
+    if (senha != caixaAlta) {
+      criterios++;
+    }
+
+    if (criterios == 3) {
+      nivel = `<span class="nivel3">Forte</span>`;
+    } else if (criterios == 2) {
+      nivel = `<span class="nivel2">Média</span>`;
+    } else if (criterios == 1) {
+      nivel = `<span class="nivel1">Fraca</span>`;
+    } else {
+      nivel = `Insegura`;
+    }
+
+    div_mensagem.innerHTML = nivel;
+  }
+</script>

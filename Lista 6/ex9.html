@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styleEx9.css" />
+  </head>
+  <body>
+    <div class="logo">
+      <h1>Jogo das Palavras</h1>
+      <div id="div_palavra"></div>
+    </div>
+
+    <br /><br />
+    <div class="container">
+      <div class="quadro1">
+        Informe 1 letra por vez: <input type="text" id="ipt_letra" />
+        <button onclick="verificar()">Verificar Letra</button>
+        <div id="div_mensagem"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let palavra = "ribamar";
+  let r = 2;
+  let i = 1;
+  let b = 1;
+  let a = 2;
+  let m = 1;
+
+  let tamPalavra = palavra.length;
+  let contador = tamPalavra;
+  div_palavra.innerHTML = `<p><b><i>Palavra Secreta definida! Descubra todos os ${tamPalavra} caracteres!<i><b></p>`;
+
+  function verificar() {
+    let mensagem = ''
+    let letra = ipt_letra.value.toLowerCase();
+    if (letra.includes("r") && r >= 1) {
+      r--;
+      contador--;
+      mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${contador} caracteres`;
+    } else if (letra.includes("i") && i >= 1) {
+      i--;
+      contador--;
+      mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${contador} caracteres`;
+    } else if (letra.includes("b") && b >= 1) {
+      b--;
+      contador--;
+      mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${contador} caracteres`;
+    } else if (letra.includes("a") && a >= 1) {
+      a--;
+      contador--;
+      mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${contador} caracteres`;
+    } else if (letra.includes("m") && m >= 1) {
+      m--;
+      contador--;
+      mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${contador} caracteres`;
+    } else {
+      mensagem = `O caractere "${letra}" NÃO aparece na palavra secreta! Faltam ${contador} caracteres`;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+
+    if (contador <= 0) {
+      div_mensagem.innerHTML = `Parabéns, você descobriu todas as letras da palavra secreta ${palavra.toUpperCase()}!`;
+    }
+
+    ipt_letra.value = "";
+    ipt_letra.focus();
+  }
+</script>

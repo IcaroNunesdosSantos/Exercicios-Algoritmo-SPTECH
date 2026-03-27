@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Insira sua frase:
+    <input type="text" id="ipt_frase" /> <br />
+    <button onclick="analisar()">Analisar Frase</button>
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let mensagem = "";
+    let frase_original = ipt_frase.value;
+
+    let tam_frase = frase_original.length;
+    mensagem += `Quantidade de Caracteres: ${tam_frase}<br>`;
+
+    if (tam_frase < 10) {
+      mensagem += `<span style="color: red;"> Frase Curta!`;
+    } else {
+      mensagem += `<span style="color: blue;"> Frase longa!`;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

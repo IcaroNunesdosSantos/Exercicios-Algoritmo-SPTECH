@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Insira o rank dos seus filmes favoritos:
+    <input type="text" id="ipt_filme">
+    <button onclick="cadastro()">Cadastrar filme</button> <br><br>
+    <button onclick="favoritos()">Ver Favoritos</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let filmes = [];
+    function cadastro(){
+        let filme = ipt_filme.value
+        filmes.push(filme);
+    }
+    function favoritos(){
+        let mensagem = ''
+        mensagem = filmes.toString().replaceAll(',','<br>');
+        mensagem += `<br>Total: ${filmes.length}`
+        mensagem += `<br>O que filme que mais gosta é ${filmes[0]}`;
+        mensagem += `<br>E desses, o que menos gosta é ${filmes[filmes.length - 1]}`;
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>

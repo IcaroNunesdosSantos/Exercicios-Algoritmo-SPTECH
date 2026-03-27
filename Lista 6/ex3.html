@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Informe uma frase:
+    <input type="text" id="ipt_frase" /> <br />
+    <button onclick="analisar()">Analisar Frase</button><br />
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let mensagem = "";
+    let frase = ipt_frase.value;
+    let fraseComeco = frase.startsWith("sptech");
+    let fraseFim = frase.endsWith("sptech");
+
+    if (fraseComeco && fraseFim) {
+      mensagem = `A frase começa e termina com "sptech"`;
+    } else if (fraseComeco == true) {
+      mensagem = `A frase começa com "sptech"`;
+    } else if (fraseFim == true) {
+      mensagem = `A frase termina com "sptech"`;
+    } else {
+      mensagem = `A frase não começa nem termina com "sptech"!`;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

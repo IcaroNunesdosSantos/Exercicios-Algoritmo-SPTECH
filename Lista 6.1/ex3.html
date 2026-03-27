@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Cadastre os bairros que já morou:
+    <input type="text" id="ipt_bairros">
+    <button onclick="cadastrar()">Cadastrar bairro</button> <br><br>
+
+    Relembrar moradia:
+    <input type="text" id="ipt_relembrar">
+    <button onclick="relembrar()">Relembrar moradia</button> <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let bairros = []
+
+    function cadastrar(){
+        let cadastro = ipt_bairros.value;
+        bairros.push(cadastro);
+        ipt_bairros.value = "";
+        ipt_bairros.focus();
+    }
+
+    function relembrar(){
+        let relembre = Number(ipt_relembrar.value);
+
+        if(relembre > bairros.length){
+            div_mensagem.innerHTML = `Você ainda não morou num ${relembre}º bairro!`
+        }else {
+            div_mensagem.innerHTML = bairros[relembre-1];
+        }
+
+        ipt_relembrar.focus();
+
+    }
+
+</script>

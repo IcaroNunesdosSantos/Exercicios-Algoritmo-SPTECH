@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    informe letras:
+    <input type="text" id="ipt_letra" />
+
+    <button onclick="verificar()">verificar letras</button>
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let senhaSecreta = "Ribamar";
+
+    let letra = ipt_letra.value;
+
+    if (letra.includes("r")) {
+      div_mensagem.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+    } else if (letra.includes("i")) {
+      div_mensagem.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+    } else if (letra.includes("b")) {
+      div_mensagem.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+    } else if (letra.includes("m")) {
+      div_mensagem.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+    } else if (letra.includes("a")) {
+      div_mensagem.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+    } else {
+      div_mensagem.innerHTML = `A letra ${letra} não aparece na palavra secreta!`;
+    }
+  }
+</script>
