@@ -1,48 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    Inserir destino: <input type="text" id="ipt_destino"> <br><br>
-    <button onclick="adicionar()">Adicionar</button> <br><br>
+  </head>
+  <body>
+    Inserir destino: <input type="text" id="ipt_destino" /> <br /><br />
+    <button onclick="adicionar()">Adicionar</button> <br /><br />
     <button onclick="primeira()">Primeira viagem</button>
     <button onclick="terceira()">Terceira viagem</button>
     <button onclick="ultima()">Última viagem</button>
     <div id="div_mensagem"></div>
-</body>
+  </body>
 </html>
 
 <script>
-    let destinos = [];
+  let destinos = [];
 
-    function adicionar(){
-        let destino = ipt_destino.value;
-        destinos.push(destino);
-    }
+  function adicionar() {
+    let destino = ipt_destino.value;
+    destinos.push(destino);
+  }
 
-    function primeira(){
-        if(destinos != ''){
-            div_mensagem.innerHTML = destinos[0];
-        }else {
-            div_mensagem.innerHTML = `Ainda não viajou`;
-        }
+  function primeira() {
+    if (destinos != "") {
+      div_mensagem.innerHTML = destinos[0];
+    } else {
+      div_mensagem.innerHTML = `Ainda não viajou`;
     }
-    function terceira(){
-        if(destinos.length < 3){
-            div_mensagem.innerHTML = `Ainda não fez a terceira viagem`;
-        }else if(destinos != ''){
-            div_mensagem.innerHTML = destinos[2];
-        }
-    }    
-    function ultima(){
-        if(destinos != ''){
-            div_mensagem.innerHTML = destinos[destinos.length - 1];
-        }else {
-            div_mensagem.innerHTML = `Ainda não viajou`;
-        }
+  }
+  function terceira() {
+    if (destinos.length < 3) {
+      div_mensagem.innerHTML = `Ainda não fez a terceira viagem`;
+    } else if (destinos != "") {
+      div_mensagem.innerHTML = destinos[2];
     }
-
+  }
+  function ultima() {
+    if (destinos != "") {
+      div_mensagem.innerHTML = destinos[destinos.length - 1];
+    } else {
+      div_mensagem.innerHTML = `Ainda não viajou`;
+    }
+  }
 </script>

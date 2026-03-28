@@ -1,44 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .span1{
-            color:blue
-        }
-        .span2{
-            color: red
-        }
-
+      .span1 {
+        color: blue;
+      }
+      .span2 {
+        color: red;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     Insira o rank dos seus filmes favoritos:
-    <input type="text" id="ipt_filme">
+    <input type="text" id="ipt_filme" />
     <button onclick="cadastro()">Cadastrar filme</button>
     <div id="div_mensagem"></div>
-</body>
+  </body>
 </html>
 
 <script>
-    let filmes = [];
-    let mensagem = '';
-    function cadastro(){
-        let filme = ipt_filme.value;
-        filmes.push(filme);
-        let indice = filmes.length-1;
+  let filmes = [];
+  let mensagem = "";
+  function cadastro() {
+    let filme = ipt_filme.value;
+    filmes.push(filme);
+    let indice = filmes.length - 1;
 
-        if(indice % 2 == 0){
-            mensagem += `<br> <span class="span1">${filmes[indice].replaceAll(',','<br>')}</span>` 
-        }
-        if(indice % 2 == 1){
-            mensagem += `<br><span class="span2">${filmes[indice].replaceAll(',','<br>')}</span>` 
-        }
-        
-
-        div_mensagem.innerHTML = mensagem;
+    if (indice % 2 == 0) {
+      mensagem += `<br> <span class="span1">${filmes[indice].replaceAll(",", "<br>")}</span>`;
+    }
+    if (indice % 2 == 1) {
+      mensagem += `<br><span class="span2">${filmes[indice].replaceAll(",", "<br>")}</span>`;
     }
 
+    div_mensagem.innerHTML = mensagem;
+  }
 </script>

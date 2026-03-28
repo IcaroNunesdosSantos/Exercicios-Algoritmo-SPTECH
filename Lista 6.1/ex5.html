@@ -1,36 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     Insira o rank dos seus filmes favoritos:
-    <input type="text" id="ipt_filme">
-    <button onclick="cadastro()">Cadastrar filme</button> <br><br>
+    <input type="text" id="ipt_filme" />
+    <button onclick="cadastro()">Cadastrar filme</button> <br /><br />
     <div id="div_mensagem"></div>
-</body>
+  </body>
 </html>
 
 <script>
-    let filmes = []
-    function cadastro(){
-        let mensagem = '';
-        let filme = ipt_filme.value;
-        filmes.push(filme);
+  let filmes = [];
+  function cadastro() {
+    let mensagem = "";
+    let filme = ipt_filme.value;
+    filmes.push(filme);
 
-        mensagem = `Seu filme favorito:` + filmes[0];
+    mensagem = `Seu filme favorito:` + filmes[0];
 
-        if(filmes.length >= 3){
-            mensagem += `<br>Seu 3º filme favorito: ` + filmes[2];
-        }else {
-            mensagem += `<br>Seu 3º filme favorito: Ainda não existe`;
-        }
-
-        mensagem += `<br>Total de filmes cadastrados:` + filmes.length;
-        
-        div_mensagem.innerHTML = mensagem;
+    if (filmes.length >= 3) {
+      mensagem += `<br>Seu 3º filme favorito: ` + filmes[2];
+    } else {
+      mensagem += `<br>Seu 3º filme favorito: Ainda não existe`;
     }
 
+    mensagem += `<br>Total de filmes cadastrados:` + filmes.length;
+
+    div_mensagem.innerHTML = mensagem;
+  }
 </script>
