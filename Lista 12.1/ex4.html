@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Nome do alimento:
+    <input type="text" id="ipt_nome" /> <br /><br />
+
+    Quantidade do alimento:
+    <input type="text" id="ipt_qtdAlimento" /> <br /><br />
+
+    <button onclick="cadastrar()">Cadastrar</button> <br /><br />
+    <button onclick="atualizar()">Atualizar Lista</button> <br /><br />
+    Quantidade
+    <select id="slc_filtro">
+      <option value="fil1">Acima de:</option>
+      <option value="fil2">Abaixo de:</option>
+    </select>
+    <input type="text" id="ipt_valor" placeholder="Quantidade" />
+    <button onclick="filtrar()">Filtrar Alimentos</button>
+    <hr />
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  let listaAlimentos = [];
+  let alimento;
+  let mensagem = "";
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let qtdAlimento = Number(ipt_qtdAlimento.value);
+
+    if (qtdAlimento > 0 && nome.length >= 3) {
+      alimento = {
+        nome: nome,
+        qtdAlimento: qtdAlimento,
+      };
+
+      listaAlimentos.push(alimento);
+      mensagem = `Alimento cadastrado com sucesso!!`;
+    } else {
+      mensagem = `Informe uma valor válido (positivo) e nome válido(mais de 3 letras)`;
+    }
+  }
+
+  function atualizar() {
+    let tamLista = listaAlimentos.length;
+    let alimentos = "";
+    let mensagem = "";
+
+    for(let i = 0; i < tamLista; i++) {
+      let alimentoAtual = listaAlimentos[i];
+
+      alimentos += `${alimentoAtual.nome} - ${alimentoAtual.qtdAlimento} <br>`;
+    }
+
+    mensagem = `
+            Você tem ${listaAlimentos.length} alimentos cadastrados: <br>
+
+            ${alimentos}
+        `;
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let filtro = slc_filtro.value;
+    let valor = ipt_valor.value;
+    let mensagem = "";
+
+    if (filtro == "fil1") {
+      for (let i = 0; i < listaAlimentos.length; i++) {
+        if (listaAlimentos[i].qtdAlimento >= valor) {
+          mensagem += `${listaAlimentos[i].nome} - ${listaAlimentos[i].qtdAlimento} <br>`;
+        }
+      }
+    } else if (filtro == "fil2") {
+      for (let i = 0; i < listaAlimentos.length; i++) {
+        if (listaAlimentos[i].qtdAlimento <= valor) {
+          mensagem += `${listaAlimentos[i].nome} - ${listaAlimentos[i].qtdAlimento} <br>`;
+        }
+      }
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

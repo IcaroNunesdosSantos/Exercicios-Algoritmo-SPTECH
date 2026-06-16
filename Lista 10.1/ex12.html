@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="avaliar()">Avaliar!</button>
+    <button onclick="gerarMedia()">Verificar Média</button>
+    <div id="div_nota"></div>
+    <div id="div_emoji"></div>
+    <div id="div_media"></div>
+    <div id="div_emojiMedia"></div>
+  </body>
+</html>
+
+<script>
+  function avaliar() {
+    let emoji = "";
+    let aleatorio = Math.random();
+    nota = (aleatorio * 5).toFixed(1);
+    div_nota.innerHTML = nota;
+
+    historico.push(nota);
+
+    if (nota <= 0.5) {
+      emoji = "😭";
+    } else if (nota <= 1.5) {
+      emoji = "🥲";
+    } else if (nota <= 3.5) {
+      emoji = "😐";
+    } else if (nota <= 4.5) {
+      emoji = "😊";
+    } else {
+      emoji = "😁";
+    }
+
+    div_emoji.style.fontSize = "100px";
+    div_emoji.innerHTML = emoji;
+  }
+
+  let historico = [];
+
+  function gerarMedia() {
+    let mensagem = "";
+    let emoji = "";
+
+    let soma = 0;
+
+    for (let i = 0; i < historico.length; i++) {
+      soma += Number(historico[i]);
+    }
+
+    let media = soma / historico.length;
+
+    if (media <= 0.5) {
+      emoji = "😭";
+    } else if (media <= 1.5) {
+      emoji = "🥲";
+    } else if (media <= 3.5) {
+      emoji = "😐";
+    } else if (media <= 4.5) {
+      emoji = "😊";
+    } else {
+      emoji = "😁";
+    }
+
+    div_media.innerHTML = `Média geral: ${media.toFixed(1)}`;
+    
+    div_emojiMedia.style.fontSize = "100px";
+    div_emojiMedia.innerHTML = emoji;
+  }
+</script>

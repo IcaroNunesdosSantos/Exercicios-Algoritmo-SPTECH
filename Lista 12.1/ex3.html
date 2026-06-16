@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome dos jogos que já jogou:
+    <input type="text" id="ipt_jogo">
+    <button onclick="cadastrar()">Cadastrar</button> <br><br>
+    <div id="div_cadastroOk"></div>
+    <hr>
+
+    Informe um intervalo crescente:
+    De... <input type="text" id="ipt_de">
+    Até... <input type="text" id="ipt_ate">
+    <button onclick="filtrar()">Filtrar</button>
+    <button onclick="exibir()">Listar Jogos</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let listaJogos = [];
+
+    function cadastrar(){
+        let jogo = ipt_jogo.value;
+        listaJogos.push(jogo);
+        div_cadastroOk.innerHTML = `Você já cadastrou ${listaJogos.length} jogos`
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = listaJogos.length - 1; i >= 0 ; i--){
+            mensagem += `${listaJogos[i]} <br>`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar(){
+        let mensagem = '';
+        let de = ipt_de.value;
+        let ate = ipt_ate.value;
+
+        if(de < ate){
+            let filtro = [];
+            
+            for(let i = listaJogos.length; i >= 0 ; i--){
+                if(i >= de-1 && i <= ate-1){
+                    filtro.push(listaJogos[i])
+                }
+            }
+    
+            for(let i = 0; i < filtro.length; i++){
+                mensagem += `${filtro[i]} <br>`
+            }
+        }else{
+            mensagem = `O valor de "de..." deve ser menor que o valor de "até..."`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+
+</script>

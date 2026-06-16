@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Nome da despesa:
+    <input type="text" id="ipt_nome" /> <br /><br />
+
+    Valor da despesa:
+    <input type="text" id="ipt_valorDespesa" /> <br /><br />
+
+    <button onclick="cadastrar()">Cadastrar Despesa</button> <br /><br />
+    <button onclick="resumir()">Resumo das Despesas</button> <br /><br />
+    
+    Despesas
+    <select id="slc_filtro">
+      <option value="fil1">Acima de:</option>
+      <option value="fil2">Abaixo de:</option>
+    </select>
+    <input type="text" id="ipt_valor" placeholder="valor" />
+    <button onclick="filtrar()">Filtrar Despesas</button>
+    <hr />
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  let listaDespesa = [];
+  let despesa;
+  let mensagem = "";
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let valorDespesa = Number(ipt_valorDespesa.value);
+
+    if (valorDespesa > 0) {
+      despesa = {
+        nome: nome,
+        valorDespesa: valorDespesa,
+      };
+
+      listaDespesa.push(despesa);
+      mensagem = `Despesa cadastrado com sucesso!!`;
+    } else {
+      mensagem = `Informe uma valor válido (positivo)`;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function resumir() {
+    let tamLista = listaDespesa.length;
+    let despesas = "";
+    let mensagem = "";
+
+    for (let i = 0; i < tamLista; i++) {
+      let despesaAtual = listaDespesa[i];
+
+      despesas += `${despesaAtual.nome} - R$${despesaAtual.valorDespesa} <br>`;
+    }
+
+    let totalGasto = somar(listaDespesa);
+
+    mensagem = `
+            Você tem ${listaDespesa.length} despesas cadastrados: <br>
+
+            ${despesas} <br>
+
+            Total gasto: ${totalGasto}
+        `;
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function somar(vetor) {
+    let soma = 0;
+
+    for (let i = 0; i < vetor.length; i++) {
+      soma += vetor[i].valorDespesa;
+    }
+
+    return soma;
+  }
+
+  function filtrar() {
+    let filtro = slc_filtro.value;
+    let valor = ipt_valor.value;
+    let mensagem = "";
+
+    if (filtro == "fil1") {
+      for (let i = 0; i < listaDespesa.length; i++) {
+        if (listaDespesa[i].valorDespesa >= valor) {
+          mensagem += `${listaDespesa[i].nome} - ${listaDespesa[i].valorDespesa} <br>`;
+        }
+      }
+    } else if (filtro == "fil2") {
+      for (let i = 0; i < listaDespesa.length; i++) {
+        if (listaDespesa[i].valorDespesa <= valor) {
+          mensagem += `${listaDespesa[i].nome} - ${listaDespesa[i].valorDespesa} <br>`;
+        }
+      }
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

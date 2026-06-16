@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Indique o nome de cada projeto que já criou na vida:
+    <input type="text" id="ipt_projetos">
+    <button onclick="registrar()">Registrar projeto</button>
+    <button onclick="mostrar()">Mostrar Projetos</button>
+    
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    projetos = [];
+    function registrar(){
+        div_mensagem.innerHTML = '';
+        let projeto = ipt_projetos.value;
+        projetos.push(projeto);
+
+        let experiencia = '';
+        let qtdProjetos = projetos.length
+        
+        if(qtdProjetos < 5){
+            experiencia = 'Júnior'
+        }else if (qtdProjetos <= 12){
+            experiencia = 'Pleno'
+        } else if(qtdProjetos > 12){
+            experiencia = 'Sênior'
+        }
+
+
+        div_mensagem.innerHTML = `Você já fez ${projetos.length} projetos. Por isso você é um profissional ${experiencia}`
+    }
+
+    function mostrar(){
+        div_mensagem.innerHTML = '';
+
+        for (let i = projetos.length - 1; i >= 0; i--) {
+            div_mensagem.innerHTML += `${projetos[i]} <br>`    
+        }
+    }
+
+</script>

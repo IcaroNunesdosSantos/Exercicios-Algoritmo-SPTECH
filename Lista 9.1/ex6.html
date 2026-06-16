@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Informe o preço do produto:
+    <input type="text" id="ipt_preco" />
+    <button onclick="cadastrar()">Cadastrar</button> <br /><br />
+
+    <button onclick="atualizar()">Atualizar Estoque</button>
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  precos = [];
+  function cadastrar() {
+    let preco = Number(ipt_preco.value);
+    precos.push(preco);
+  }
+
+  function atualizar() {
+    div_mensagem.innerHTML = "";
+    let mensagem = '';
+    let soma = 0;
+    for (let i = precos.length - 1; i >= 0; i--) {
+      mensagem += `${precos[i]} <br>`;
+      soma += precos[i];
+    }
+
+    let somaFormatada = soma.toLocaleString('pt-BR', {currency: 'BRL', style: 'currency'})
+
+    div_mensagem.innerHTML = mensagem + `<br>  Você tem ${precos.length} produtos cadastrados em estoque <br> Seu estoque vale ${somaFormatada} `
+  }
+</script>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="sortear()">Sortear Nota para Aluno</button>
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function sortear() {
+    let aleatorio = Math.random();
+    let nota = 0;
+    let formatado = aleatorio * 10;
+
+    if(formatado >= 9.999){
+        nota = 10;
+    }else {
+        nota = formatado.toFixed(1);
+    }
+
+
+
+    console.log(nota);
+    div_mensagem.innerHTML = `Nota: ${nota} <br>`
+  }
+</script>

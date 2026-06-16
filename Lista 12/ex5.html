@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do aluno:
+    <input type="text" id="ipt_nome"> <br><br>
+
+    Nota do aluno:
+    <input type="text" id="ipt_nota"> <br><br>
+
+    Frequência (%):
+    <input type="text" id="ipt_freq"> <br><br>
+
+    <button onclick="analisar()">Analisar Aluno</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let aluno;
+    function analisar(){
+        aluno = 
+        {
+            nome: ipt_nome.value,
+            nota: ipt_nota.value,
+            frequencia: ipt_freq.value
+        }
+
+        if(aluno.nota >= 6 && aluno.frequencia >= 75){
+            aluno.situacao = 'Aprovado';
+        }else {
+            aluno.situacao = 'reprovado';
+        }
+
+        div_mensagem.innerHTML = `
+            Aluno: ${aluno.nome} <br>
+            Nota: ${aluno.nota} <br>
+            Frequência: ${aluno.frequencia}% <br>
+            Situação: ${aluno.situacao} <br>
+        `
+    }
+
+</script>

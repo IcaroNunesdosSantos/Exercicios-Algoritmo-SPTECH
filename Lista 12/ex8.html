@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do comprador:
+    <input type="text" id="ipt_nome"> <br><br>
+
+    Email:
+    <input type="text" id="ipt_email"> <br><br>
+
+    Nome do produto:
+    <input type="text" id="ipt_produto"> <br><br>
+
+    Valor do produto:
+    <input type="text" id="ipt_valor"> <br><br>
+
+    <button onclick="cadastrar()">Finalizar Compra</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let comprador;
+    let produto;
+
+    function cadastrar(){
+        comprador = {
+            nome: ipt_nome.value,
+            email: ipt_email.value
+        }
+        
+        produto = {
+            produto: ipt_produto.value,
+            valor: ipt_valor.value
+        }
+
+        let mensagem = '';
+    
+        mensagem = `
+            Comprador: ${comprador.nome} | ${comprador.email} <br>
+            Produto: ${produto.produto} <br>
+            Valor: R$${produto.valor}
+        `
+        console.log(comprador, produto);
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+</script>

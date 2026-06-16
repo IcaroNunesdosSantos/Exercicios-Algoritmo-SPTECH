@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        width: 30px;
+        height: 30px;
+    }
+</style>
+<body>
+    Informe a quantidade de depósitos no banco: 
+    <input type="text" id="ipt_qtdDeposito"> <br><br>
+
+    Informe o valor do depósito (todos os depósitos com o mesmo valor): <br>
+    <input type="text" id="ipt_valorDeposito"> <br><br>
+
+    <button onclick="acompanhar()">Acompanhar grana</button>
+    
+    <div id="div_mensagem"></div>
+    
+
+    
+
+</body>
+</html>
+
+<script>
+
+    function acompanhar(){
+        let qtdDeposito = Number(ipt_qtdDeposito.value)
+        let valorDeposito = Number(ipt_valorDeposito.value)
+        let valorInicial = valorDeposito;
+        let mensagem = '';
+
+        for(let contador = 1; contador <= qtdDeposito; contador++){
+            if(contador > 1){
+                valorDeposito += valorInicial;
+            }
+            
+            if(contador % 3 == 0){
+                valorDeposito += (valorDeposito * 0.01)
+                mensagem += `<br><img src="https://cdn-icons-png.flaticon.com/512/148/148839.png" alt="">` 
+            }
+            mensagem += `<br>${contador}º Mês: ${valorDeposito.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} `            
+            
+        }
+        
+        mensagem += `<br> Total guardado: ${valorDeposito.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>

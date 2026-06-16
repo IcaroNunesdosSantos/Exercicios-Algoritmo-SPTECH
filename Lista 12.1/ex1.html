@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome das músicas favoritas:
+    <input type="text" id="ipt_musica">
+    <button onclick="cadastrar()">Cadastrar</button> <br><br>
+    <hr>
+    De... <input type="text" id="ipt_de">
+    Até... <input type="text" id="ipt_ate">
+    <button onclick="filtrar()">Filtrar</button>
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+
+<script>
+    let listaMusicas = [];
+
+    function cadastrar(){
+        let musica = ipt_musica.value;
+        listaMusicas.push(musica);
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaMusicas.length; i++){
+            mensagem += `${listaMusicas[i]} <br>`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar(){
+        let mensagem = '';
+        let de = ipt_de.value;
+        let ate = ipt_ate.value;
+
+        if(de < ate){
+            let filtro = [];
+            
+            for(let i = 0; i < listaMusicas.length; i++){
+                if(i >= de-1 && i <= ate-1){
+                    filtro.push(listaMusicas[i])
+                }
+            }
+    
+            for(let i = 0; i < filtro.length; i++){
+                mensagem += `${filtro[i]} <br>`
+            }
+        }else{
+            mensagem = `O valor de "de..." deve ser menor que o valor de "até..."`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+
+</script>

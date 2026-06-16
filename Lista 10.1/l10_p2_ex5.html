@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        height: 200px;
+    }
+</style>
+<body>
+    <button onclick="jogar()">Jogar</button>
+    <div id="div_imagem"></div>
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+    let v1 = 0;
+    let v2 = 0;
+
+    function jogar(){
+        let aleatorio = Math.random();
+        let aleatorio2 = Math.random();
+
+        let jogador = aleatorio * 2 + 1;
+        let jogador2 = aleatorio2 * 2 + 1;
+        
+        let imagem = '';
+        let imagem2 = '';
+
+        let mensagem = '';
+
+        jogador = jogador.toFixed();
+        jogador2 = jogador2.toFixed();
+
+
+        if(jogador == 1){
+        /* pedra */    imagem = `<img src="https://img.freepik.com/psd-gratuitas/rocha-cinzenta-isolada-em-fundo-transparente_632498-25568.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        }else if(jogador == 2){
+        /* papel */    imagem = `<img src="https://img.freepik.com/fotos-gratis/textura-de-papel-branco_1194-2301.jpg?semt=ais_hybrid&w=740&q=80" alt="">`;
+        }else if(jogador == 3){
+        /* tesoura */    imagem = `<img src="https://images.tcdn.com.br/img/img_prod/406359/tesoura_escolar_multiuso_13cm_lamina_de_aco_inox_e_corpo_plastico_masterprint_mp502_3741_1_bbda60f9f34b62fcca20c6dbea7787e7_20220707124956.jpg" alt="">`;
+        }
+
+        if(jogador2 == 1){
+            imagem2 = `<img src="https://img.freepik.com/psd-gratuitas/rocha-cinzenta-isolada-em-fundo-transparente_632498-25568.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        }else if(jogador2 == 2){
+            imagem2 = `<img src="https://img.freepik.com/fotos-gratis/textura-de-papel-branco_1194-2301.jpg?semt=ais_hybrid&w=740&q=80" alt="">`;
+        }else if(jogador2 == 3){
+            imagem2 = `<img src="https://images.tcdn.com.br/img/img_prod/406359/tesoura_escolar_multiuso_13cm_lamina_de_aco_inox_e_corpo_plastico_masterprint_mp502_3741_1_bbda60f9f34b62fcca20c6dbea7787e7_20220707124956.jpg" alt="">`;
+        }        
+
+
+
+        if(jogador == jogador2){
+            mensagem = `Empate`
+        }else if((jogador == 1 && jogador2 == 3)||
+                (jogador == 2 && jogador2 == 1)||
+                (jogador == 3 && jogador2 == 2)
+        ){
+            mensagem = `O jogador 1 venceu!`
+            v1++
+        }else{
+            mensagem = `O jogador 2 venceu!`
+            v2++
+        }
+
+        let placar = '';
+        placar = `<br>Jogador 1: ${v1} vitória(s)
+                      <br>Jogador 2: ${v2} vitória(s)`
+
+        div_imagem.innerHTML = imagem + imagem2;
+
+        div_mensagem.innerHTML = mensagem + placar;
+
+    }
+
+</script>

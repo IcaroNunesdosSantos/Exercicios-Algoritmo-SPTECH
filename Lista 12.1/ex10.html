@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Informe o nome do animal:
+    <input type="text" id="ipt_nome" /> <br /><br />
+    Informe a espécie:
+    <input type="text" id="ipt_especie" /> <br /><br />
+
+    <button onclick="cadastrar()">Cadastrar Animal</button>
+    <button onclick="exibir()">Listar Animais</button> <br /><br />
+
+    Filtrar por espécie <input type="text" id="ipt_filtro" />
+    <button onclick="filtrar()">Filtrar Animais</button> <br />
+
+    <hr />
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  let animais = [];
+  let animal;
+
+  function cadastrar() {
+    animal = {
+      nome: ipt_nome.value,
+      especie: ipt_especie.value,
+    };
+
+    animais.push(animal);
+  }
+
+  function exibir() {
+    let mensagem = "";
+
+    for (i = 0; i < animais.length; i++) {
+      let animalAtual = animais[i];
+
+      mensagem += `${i + 1}. Nome: ${animalAtual.nome} <br>
+                                 Espécie: ${animalAtual.especie} <br>
+                            `;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let mensagem = "";
+    let filtro = ipt_filtro.value;
+
+    for (let i = 0; i < animais.length; i++) {
+      let animalAtual = animais[i];
+
+      if (filtro == animalAtual.especie) {
+        mensagem += `${i + 1}. Nome: ${animalAtual.nome} <br>
+                                 Espécie: ${animalAtual.especie} <br>
+                            `;
+      }
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

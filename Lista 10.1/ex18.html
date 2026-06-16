@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Jogador 1:</span><span id="placar_1">0</span> <br>
+    <span>Jogador 2:</span><span id="placar_2">0</span> <br>
+    <span>Empate:</span><span id="placar_3">0</span> <br> <br>
+
+    <button onclick="jogar()">Jogar</button>
+
+    <div id="div_valores"></div>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let empate = 0;
+    let jogador1 = 0;
+    let jogador2 = 0;
+
+    function jogar(){
+        let aleatorio = Math.random();
+        let aleatorio2 = Math.random();
+
+        let dado1 = (aleatorio * 5 + 1).toFixed();
+        let dado2 = (aleatorio2 * 5 + 1).toFixed();
+
+        div_valores.innerHTML = `<br>Dado 1: ${dado1}, Dado 2: ${dado2}`
+
+
+        if(dado1 == dado2){
+            empate++
+        }else if(dado1 > dado2){
+            jogador1++
+        }else if(dado2 > dado1){
+            jogador2++
+        }
+
+        placar_1.innerHTML = `${jogador1}`
+        placar_2.innerHTML = `${jogador2}`
+        placar_3.innerHTML = `${empate}`
+
+        let mensagem = '';
+
+        if(jogador1 > jogador2){
+            mensagem = `<br>O jogador 1 está vencendo!`
+        }else if(jogador2 > jogador1){
+            mensagem = `<br>O jogador 2 está vencendo!`
+        }else if(jogador2 == jogador1){
+            mensagem = `<br>O jogo está empatado!`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Informe o nome do produto:
+    <input type="text" id="ipt_nome" />
+    <br /><br />
+    Informe o valor desse produto:
+    <input type="text" id="ipt_preco" />
+    <br /><br />
+
+    <button onclick="cadastrar()">cadastrar</button> <br /><br />
+
+    <button onclick="atualizar()">Atualizar Estoque</button> <br /><br />
+
+    <select id="slc_filtro">
+      <option value="fil1">Preços acima de</option>
+      <option value="fil2">Preços abaixo de</option>
+    </select>
+
+    <input type="text" id="ipt_valor" placeholder="valor" /> <br /><br />
+    <button onclick="filtrar()">Filtrar Produtos</button>
+
+    <hr />
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  let estoque = [];
+  let produto;
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let preco = Number(ipt_preco.value);
+    let mensagem = "";
+
+    if (preco > 0 && nome.length >= 3) {
+      produto = {
+        nome: nome,
+        preco: preco,
+      };
+
+      estoque.push(produto);
+      mensagem = `Produto cadastrado com sucesso!!`;
+    } else {
+      mensagem = `Informe uma valor válido (positivo) e nome válido(mais de 3 letras)`;
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function atualizar() {
+    let qtdProdutos = estoque.length;
+    let produtos = "";
+    let mensagem = "";
+
+    for (let i = 0; i < qtdProdutos; i++) {
+      let produtoAtual = estoque[i];
+
+      produtos += `${i + 1}. ${produtoAtual.nome} - R$${produtoAtual.preco} <br>`;
+    }
+
+    let somaEstoque = somar(estoque);
+
+    mensagem = `
+            Você tem ${qtdProdutos} produtos cadastrados em estoque: <br>
+
+            ${produtos}  
+
+            Seu estoque vale R$${somaEstoque} 
+        `;
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let filtro = slc_filtro.value;
+    let valor = ipt_valor.value;
+    let mensagem = "";
+
+    if (filtro == "fil1") {
+      for (let i = 0; i < estoque.length; i++) {
+        let produtoAtual = estoque[i];
+
+        if (produtoAtual.preco > valor) {
+          mensagem += `${i + 1}. ${produtoAtual.nome} - R$${produtoAtual.preco} <br>`;
+        }
+      }
+    } else if (filtro == "fil2") {
+      for (let i = 0; i < estoque.length; i++) {
+        let produtoAtual = estoque[i];
+
+        if (produtoAtual.preco < valor) {
+          mensagem += `${i + 1}. ${produtoAtual.nome} - R$${produtoAtual.preco} <br>`;
+        }
+      }
+    }
+
+    div_mensagem.innerHTML = mensagem;
+  }
+
+  function somar(vetor) {
+    let soma = 0;
+
+    for (let i = 0; i < vetor.length; i++) {
+      soma += vetor[i].preco;
+    }
+
+    return soma;
+  }
+</script>

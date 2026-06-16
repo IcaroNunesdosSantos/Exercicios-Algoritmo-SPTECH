@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_nome">Nome do funcionário:</label>
+    <input type="text" id="ipt_nome"> <br><br>
+
+    <label for="ipt_cargo">Cargo:</label>
+    <input type="text" id="ipt_cargo"><br><br>
+
+    <label for="ipt_salario"> Salário: </label>
+    <input type="text" id="ipt_salario"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Funcionário</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let funcionario;
+
+    function cadastrar(){
+        funcionario = 
+        {
+            nome: ipt_nome.value,
+            cargo: ipt_cargo.value,
+            salario: Number(ipt_salario.value)
+        }
+        
+
+        funcionario.nome = funcionario.nome.toUpperCase();
+        funcionario.bonus = funcionario.salario * 10 / 100;
+
+        div_mensagem.innerHTML = `
+            Funcionário: ${funcionario.nome} <br>
+            Cargo: ${funcionario.cargo} <br>
+            Salário: R$${funcionario.salario} <br>
+            Bônus: R$${funcionario.bonus}
+        `
+    }
+
+
+</script>

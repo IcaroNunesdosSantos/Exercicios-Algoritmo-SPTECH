@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o nome dos seus filhos: 
+    <input type="text" id="ipt_filho">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar Família</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    filhos = [];
+    function cadastrar(){
+        let filho = ipt_filho.value;
+
+        if(!filhos.includes(filho)){
+            filhos.push(filho);
+        }else{
+            alert(`Não pode mais de 1 filho com o mesmo nome!`)
+        }
+    }
+
+    function atualizar(){
+        let qtdFilhos = filhos.length;
+        let publica = qtdFilhos * 1500;
+        let particular = qtdFilhos * 3000;
+
+        let publicaFormatada = publica.toLocaleString('pt-br', {currency: 'BRL', style: 'currency'});
+        let particularFormatada = particular.toLocaleString('pt-br', {currency: 'BRL', style: 'currency'});
+
+        div_mensagem.innerHTML = `Você tem ${qtdFilhos} filhos  <br>
+                                Seu custo mensal será aproximadamente ${particularFormatada} se colocá-los em escola particular 
+                                ou ${publicaFormatada} se eles estudarem em escola pública  `
+    }
+
+</script>

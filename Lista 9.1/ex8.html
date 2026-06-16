@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Campanha no campeonato:
+
+    <select name="" id="slc_resultado">
+        <option>Vitória</option>
+        <option>Empate</option>
+        <option>Derrota</option>
+    </select>
+
+    <button onclick="registrar()">Registrar Jogo</button>
+    <br><br>
+
+    <label for="ipt_pesquisa">Indique qual jogo deseja saber o resultado</label>
+    <input oninput="pesquisar()" type="text" id="ipt_pesquisa">
+
+    <div id="div_mensagem"></div>
+    <br><br>
+    <div id="div_pesquisa"></div>
+</body>
+</html>
+
+
+<script>
+    let campanha = [];
+    function registrar(){
+        let resultado = slc_resultado.value;
+
+        campanha.push(resultado);
+
+        let qtdVitoria  = 0;
+        let qtdEmpate = 0;
+        let qtdDerrota = 0;
+        let pontos = 0;
+        let mensagem = 0;
+
+        for (let i = 0; i < campanha.length; i++) {
+            if(campanha[i] == 'Vitória'){
+                qtdVitoria++;
+                pontos += 3;
+            }else if(campanha[i] == 'Empate'){
+                qtdEmpate++;
+                pontos++
+            }else {
+                qtdDerrota++;
+            }
+            
+        }
+
+        let pontosPossiveis = 3 * campanha.length;
+
+        let aproveitamento = pontos / pontosPossiveis * 100;
+
+        mensagem = 
+                `O time teve: ${qtdVitoria} vitórias, ${qtdEmpate} empates, ${qtdDerrota} derrotas <br>
+                Pontuação total: ${pontos} pontos <br>
+                Aproveitamento: ${aproveitamento.toFixed(1)}%`
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function pesquisar(){
+        let pesquisa = Number(ipt_pesquisa.value);
+        let mensagem = '';
+        let resultado = '';
+        for (let i = 0; i < campanha.length; i++) {
+            if(pesquisa == i+1){
+                if(campanha[i] == 'Vitória'){
+                    resultado = 'ganhou';
+                }else if(campanha[i] == 'Empate'){
+                    resultado = 'empatou'
+                } else {
+                    resultado = 'perdeu'
+                }
+
+                mensagem = `No ${pesquisa}º jogo, o time ${resultado}`
+
+                break;
+            }else{
+                mensagem = `Não foi cadastrado um ${pesquisa}º jogo`
+            }         
+        }
+
+        div_pesquisa.innerHTML = mensagem;
+    }
+
+</script>

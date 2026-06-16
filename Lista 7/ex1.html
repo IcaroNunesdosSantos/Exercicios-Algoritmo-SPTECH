@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="Contar()">Contar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let contador = 0
+    let mensagem = ''
+    function Contar(){
+        while(contador <15){
+            contador++
+            mensagem += `${contador} <br>`
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+
+</script>

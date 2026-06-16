@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe um número (entre 0 e 200):
+    <input type="text" id="ipt_number">
+
+    <button onclick="multiplos()">Viva 0 7!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function multiplos(){
+        let contador = 0;
+        let mensagem = '';
+        let number = Number(ipt_number.value);
+        
+        if(number >= 0 && number <= 200){
+            if(number >= 7){
+                while(contador < number){
+                    mensagem += `<br> ${contador}`;
+                    contador += 7;
+                }
+            }else{
+                mensagem = `Não existe múltiplos de 7 entre 0 e ${number}`
+            }
+        }else{
+            mensagem = `Número inválido`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>

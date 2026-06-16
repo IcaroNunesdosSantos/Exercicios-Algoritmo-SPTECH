@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    #div_mensagem img{
+        height: 150px;
+    }
+
+</style>
+<body>
+    <button onclick="sortear()">Sortear Time</button>
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function sortear(){
+        let aleatorio = Math.random();
+
+        let formatado = aleatorio * 3 + 1;
+
+        formatado = formatado.toFixed();
+
+        console.log(formatado);
+
+        if(formatado == 1){
+            div_mensagem.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/SE_Palmeiras_2025_crest.png/250px-SE_Palmeiras_2025_crest.png" alt="">`
+        }else if(formatado == 2){
+            div_mensagem.innerHTML = `<img src="https://a.espncdn.com/i/teamlogos/soccer/500/874.png" alt="">`
+        }else if(formatado == 3){
+            div_mensagem.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Santos_logo.svg/1280px-Santos_logo.svg.png" alt="">`
+        }else{
+            div_mensagem.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmo4YzNTD6ymK2_lEdjyF5E8lk2DBi6KCPjg&s" alt="">`
+        }
+    }
+
+</script>

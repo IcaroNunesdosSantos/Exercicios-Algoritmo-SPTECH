@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Insira as informações do pet</h1>
+
+    <label for="ipt_nome">Nome do Pet:</label>
+    <input type="text" id="ipt_nome"> <br><br>
+
+    <label for="ipt_tipo">Tipo de animal:</label>
+    <input type="text" id="ipt_tipo"><br><br>
+
+    <label for="ipt_idade"> Idade: </label>
+    <input type="text" id="ipt_idade"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Pet</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    let pet;
+
+    function cadastrar(){
+        pet = 
+        {
+            nome: ipt_nome.value,
+            tipo:  ipt_tipo.value,
+            idade: ipt_idade.value
+        }
+
+        mensagem = `
+            Pet: ${pet.nome} <br>
+            Tipo: ${pet.tipo} <br>
+            Idade ${pet.idade} anos
+        `
+
+        div_mensagem.innerHTML = mensagem;
+        console.log(pet)
+    }
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <span>Pares:</span><span id="placar_1">0</span> <br>
+    <span>Impares:</span><span id="placar_2">0</span> <br>
+
+    <button onclick="sortear()">Sortear número</button>
+    <div id="div_numero"></div>
+</body>
+</html>
+
+
+<script>
+
+    let pares = 0;
+    let impares = 0;
+
+    function sortear(){
+        let aleatorio = Math.random();
+
+        let numero = (aleatorio * 21 + (-30)).toFixed();
+
+
+        if(numero % 2 == 0){
+            pares++
+        }else{
+            impares++
+        }
+
+        placar_1.innerHTML = `${pares}`
+        placar_2.innerHTML = `${impares}`
+
+        div_numero.innerHTML = numero;
+
+    }
+
+</script>

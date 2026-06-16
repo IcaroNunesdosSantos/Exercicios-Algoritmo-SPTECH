@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o nome do evento:
+    <input type="text" id="ipt_nome"> <br><br>
+    Informe a data do evento:
+    <input type="text" id="ipt_data"> <br><br>
+    Informe o local do evento:
+    <input type="text" id="ipt_local"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Evento</button>
+    <button onclick="exibir()">Exibir Agenda</button> <br><br>
+
+    de... <input type="text" id="ipt_de">
+    ate... <input type="text" id="ipt_ate"> <br><br>
+    <button onclick="filtrar()">Filtrar Agenda</button> <br>
+
+    <hr>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let eventos = [];
+    let evento;
+
+    function cadastrar(){
+        evento = {
+            nome: ipt_nome.value,
+            data: ipt_data.value,
+            local: ipt_local.value
+        }
+
+        eventos.push(evento);
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(i = 0; i < eventos.length; i++){
+            let eventoAtual = eventos[i];
+
+            mensagem += `${i+1}. Evento: ${eventoAtual.nome} <br>
+                                 Data: ${eventoAtual.data} <br>
+                                 Local: ${eventoAtual.local} <br>
+            `
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar(){
+        let mensagem = '';
+        let de = ipt_de.value;
+        let ate = ipt_ate.value;
+
+        if(de < ate){
+            for(let i = 0; i < eventos.length; i++){
+                let eventoAtual = eventos[i];
+
+                if(i >= de-1 && i <= ate-1){
+                    mensagem += `${i+1}. Evento: ${eventoAtual.nome} <br>
+                                 Data: ${eventoAtual.data} <br>
+                                 Local: ${eventoAtual.local} <br> `       
+                }
+            }
+        }else{
+            mensagem = `O valor de "de..." deve ser menor que o valor de "até..."`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+</script>

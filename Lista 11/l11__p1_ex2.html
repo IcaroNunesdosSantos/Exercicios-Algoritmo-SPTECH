@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Digite um texto qualquer: 
+    <input oninput="verificar()" type="text" id="ipt_texto">
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function temVogal(texto){
+        let temVogal = false;
+        
+        for(i = 0; i < texto.length; i++){
+            if(
+                texto[i] == 'a' ||
+                texto[i] == 'e' ||
+                texto[i] == 'i' ||
+                texto[i] == 'o' ||
+                texto[i] == 'u' 
+            ){
+                temVogal = true;
+            }else{
+                temVogal = false;
+            }
+        }
+
+        return `O texto tem vogal: ${temVogal}`
+    }
+    
+    function verificar(){
+        let texto = ipt_texto.value;
+
+        div_mensagem.innerHTML = temVogal(texto);
+
+    }
+
+</script>

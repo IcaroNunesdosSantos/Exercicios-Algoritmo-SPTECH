@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_nome">Nome do produto:</label>
+    <input type="text" id="ipt_nome"> <br><br>
+
+    <label for="ipt_qtdEstoque">quantidade em estoque:</label>
+    <input type="text" id="ipt_qtdEstoque"><br><br>
+
+    <label for="ipt_preco"> Preço: </label>
+    <input type="text" id="ipt_preco"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Produto</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let produto;
+    function cadastrar(){
+        produto = 
+        {
+           nome: ipt_nome.value,
+           qtdEstoque: Number(ipt_qtdEstoque.value),
+           preco: Number(ipt_preco.value)
+        }
+
+        produto.qtdEstoque += 10;
+        produto.valorTotal = (produto.qtdEstoque * produto.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        produto.preco = (produto.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+        div_mensagem.innerHTML = `
+            Produto: ${produto.nome} <br>
+            Quantidade Atualizada: ${produto.qtdEstoque} <br>
+            Preço Unitário: ${produto.preco} <br>
+            Valor Total: ${produto.valorTotal}
+        `
+    }
+
+</script>

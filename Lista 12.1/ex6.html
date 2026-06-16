@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome:
+    <input type="text" id="ipt_nome"> <br><br>
+
+    telefone para contato:
+    <input type="text" id="ipt_telefone"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Contato</button> <br><br>
+    <button onclick="exibir()">Exibir Contatos</button> <br><br>
+
+    de... <input type="text" id="ipt_de">
+    ate... <input type="text" id="ipt_ate"> <br><br>
+    <button onclick="filtrar()">Filtrar Contatos</button>
+
+    <hr>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    let lista = [];
+    let contato;
+
+    function cadastrar(){
+        contato = {
+            nome: ipt_nome.value,
+            telefone: ipt_telefone.value
+        }
+
+        lista.push(contato);
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = 0; i < lista.length; i++){
+            contatoAtual = lista[i];
+
+            mensagem += `<br>
+               ${i+1}. Nome: ${contatoAtual.nome}, Telefone: ${contatoAtual.telefone}
+            `
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar(){
+        let mensagem = '';
+        let de = ipt_de.value;
+        let ate = ipt_ate.value;
+
+        if(de < ate){
+            for(let i = 0; i < lista.length; i++){
+                if(i >= de-1 && i <= ate-1){
+                    mensagem += `<br> ${i+1}. Nome: ${contatoAtual.nome}, Telefone: ${contatoAtual.telefone}`       
+                }
+            }
+        }else{
+            mensagem = `O valor de "de..." deve ser menor que o valor de "até..."`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+</script>

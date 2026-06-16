@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Qual tabuadada você quer ver?
+    <select id="slc_multiplicando">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+
+    até que número a tabuada deve ser construída?
+    <input type="text" id="ipt_multiplicador"><br><br>
+
+    <button onclick="exibir()">Ver Tabuada</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function exibir(){
+        let contador = 0
+        let multiplicando = slc_multiplicando.value;
+        let multiplicador = Number(ipt_multiplicador.value);
+        let mensagem = ''
+        let cor = ''
+        let produto = 0
+        
+        while(contador < multiplicador){
+            contador++;
+            produto = multiplicando*contador;
+            if(contador % 2 == 0){
+                cor = 'blue'
+            }
+            if(contador % 2 == 1){
+                cor = 'red'
+            }
+            
+            mensagem += `<br><span style="color:${cor}"> ${multiplicando} x ${contador} = ${produto}</span>`
+        }
+        
+
+
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+</script>

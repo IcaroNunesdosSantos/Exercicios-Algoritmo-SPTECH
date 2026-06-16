@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o nome dos cursos:
+    <input type="text" id="ipt_cursos"> <br><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir Cursos</button> <br><br>
+
+    de... <input type="text" id="ipt_de">
+    ate... <input type="text" id="ipt_ate"> <br><br>
+    <button onclick="filtrar()">Filtrar Cursos</button>
+
+    <hr>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    let cursos = [];
+
+
+    function cadastrar(){
+        let curso = ipt_cursos.value;
+
+        cursos.push(curso);
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = 0; i < cursos.length; i++){
+            let cursoAtual = cursos[i];
+
+            mensagem += `<br>
+                ${i+1}. Curso: ${cursoAtual} <br>
+                `
+        }
+
+    div_mensagem.innerHTML = mensagem + `<br> Total de cursos: ${cursos.length}`;
+    }
+
+    function filtrar(){
+        let mensagem = '';
+        let de = ipt_de.value;
+        let ate = ipt_ate.value;
+
+        if(de < ate){
+            for(let i = 0; i < cursos.length; i++){
+                if(i >= de-1 && i <= ate-1){
+                    mensagem += `<br>
+                        ${i+1}. Curso: ${cursos[i]}
+                    `       
+                }
+            }
+        }else{
+            mensagem = `O valor de "de..." deve ser menor que o valor de "até..."`
+        }
+
+        div_mensagem.innerHTML = mensagem + `<br> Total de cursos: ${cursos.length}`;
+
+    }
+
+</script>

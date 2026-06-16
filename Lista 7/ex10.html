@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    minimo: <input type="text" id="ipt_min"> <br>
+    Maximo: <input type="text" id="ipt_max"> <br><br>
+
+    <button onclick="pares()">S2 Pares</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function pares(){
+        let mensagem = '';
+        
+        let min = ipt_min.value;     
+        let max = ipt_max.value;
+        
+        let contador = min;
+
+        if(contador < max){
+            while(contador <= max){
+                if(contador % 2 === 0){
+                    mensagem += `<br> ${contador}`;
+                }
+                contador++;
+            }
+        }else{
+            mensagem = `Minimo não pode ser maior que maximo` 
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="jogarDado1()">Dado 1</button>
+    <div id="div_dado1"></div>
+    <button onclick="jogarDado2()">Dado 2</button>
+    <div id="div_dado2"></div>
+
+    <button onclick="comparar()">Comparar Resultados</button>
+    <div id="div_resultado"></div>
+</body>
+</html>
+
+<script>
+
+    let ladoDado1 = 0;
+    let ladoDado2 = 0;
+
+    function jogarDado1(){
+        let aleatorio = Math.random();
+        ladoDado1 = (aleatorio * 5 + 1).toFixed();
+        div_dado1.innerHTML = ladoDado1
+    }
+
+    function jogarDado2(){
+        let aleatorio = Math.random();
+        ladoDado2 = (aleatorio * 5 + 1).toFixed();
+        div_dado2.innerHTML = ladoDado2
+    }
+
+    function comparar(){
+        let mensagem = '';
+        let jogador = 0;
+
+        if(ladoDado1 === ladoDado2){
+            mensagem = `Empate!`
+        }else if(ladoDado1 > ladoDado2){
+            jogador = 1;
+            mensagem = `Jogador ${jogador} venceu`
+        }else if(ladoDado2 > ladoDado1){
+            jogador = 2;
+            mensagem = `Jogador ${jogador} venceu`
+        }
+
+
+        div_resultado.innerHTML = mensagem;
+    }
+
+</script>

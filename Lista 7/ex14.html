@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe um valor minimo:
+    <input type="text" id="ipt_min">
+    <br><br>
+    Informe um valor maximo:
+    <input type="text" id="ipt_max">
+    <br><br>
+    Informe um valor para teste de divisibilidade (Entre 3 e 13):
+    <input type="text" id="ipt_divisivel">
+    <br><br>
+    <button onclick="divisivel()">Divisível</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function divisivel(){
+        
+        let min = Number(ipt_min.value);
+        let max = Number(ipt_max.value);
+        let divisivel = ipt_divisivel.value;
+        
+        let contador = min;
+        let mensagem = '';
+        
+        if(contador < max){
+            while(contador <= max){
+                if(contador % divisivel != 0){
+                    mensagem += `<br> ${contador}`
+                }
+                contador++
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div_mensagem{
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        color: white;
+        font-size: 35px;
+    }
+</style>
+<body>
+    <button onclick="jogar()">Jogar dado</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function jogar(){
+        let aleatorio = Math.random();
+
+        let formatado = aleatorio * 19 + 1;
+
+        formatado = formatado.toFixed();
+
+        console.log(formatado)
+        div_mensagem.innerHTML = `<span> ${formatado} </span>`
+
+    }
+
+</script>

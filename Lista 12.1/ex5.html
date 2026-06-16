@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome:
+    <input type="text" id="ipt_nome"> <br><br>
+
+    idade:
+    <input type="text" id="ipt_idade"> <br><br>
+
+    cargo:
+    <input type="text" id="ipt_cargo"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Usuário</button> <br><br>
+
+    <button onclick="exibirLista()">Listar todos os usuários</button>
+
+    <hr>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    let listaUsuarios = [];
+    let usuario;
+
+    function cadastrar(){
+        usuario = {
+            nome: ipt_nome.value,
+            idade: Number(ipt_idade.value),
+            cargo: ipt_cargo.value
+        }
+
+        if(usuario.cargo == 'Administrador'){
+            usuario.acesso = 'Total'
+        }else{
+            usuario.acesso = 'Limitado'
+        }
+
+        let mensagem = '';
+    
+        mensagem = `
+            Usuário: ${usuario.nome} <br>
+            Cargo: ${usuario.cargo} <br>
+            Nível de acesso: ${usuario.acesso} <br>
+        `
+
+        div_mensagem.innerHTML = mensagem;
+
+        listaUsuarios.push(usuario);
+
+    }
+
+    function exibirLista(){
+        let mensagem = '';
+
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            let usuarioAtual = listaUsuarios[i]    
+            
+            mensagem += `
+            Usuário: ${usuarioAtual.nome} <br>
+            Cargo: ${usuarioAtual.cargo} <br>
+            Nível de acesso: ${usuarioAtual.acesso} <br> <br>
+        `
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+</script>

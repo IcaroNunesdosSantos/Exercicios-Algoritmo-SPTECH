@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Indique o nome das linhas de ônibus que pegou na semana:
+    <input type="text" id="ipt_linha" />
+    <button onclick="gravar()">Gravar busão</button> <br /><br />
+
+    Pesquise por uma linha:
+    <input type="text" id="ipt_pesquisa" />
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  linhas = [];
+  function gravar() {
+    let linha = ipt_linha.value;
+    linhas.push(linha);
+
+    mostrar();
+  }
+
+  function pesquisar() {
+    let pesquisa = ipt_pesquisa.value;
+    let qtd = 0; /* quantidade de vezes que pegou aquela linha */
+    let ordem = [];
+
+    for (let i = 0; i < linhas.length; i++) {
+      if (linhas[i] === pesquisa) {
+        qtd++;
+        ordem.push(i + 1);
+      }
+    }
+
+    if (qtd > 0) {
+      div_mensagem.innerHTML = `Você já pegou essa linha 4 vezes, nessa ordem: ${ordem} `;
+    } else {
+      div_mensagem.innerHTML = `Você nunca pegou essa linha`;
+    }
+  }
+
+  function mostrar() {
+    div_mensagem.innerHTML = "";
+
+    for (let i = linhas.length - 1; i >= 0; i--) {
+      div_mensagem.innerHTML += `${linhas[i]} <br>`;
+    }
+  }
+</script>

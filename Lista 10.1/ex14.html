@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    img{
+        width: auto;
+        height: 200px;
+    }
+
+</style>
+<body>
+    <button onclick="sortearLua()">Ver a Lua</button>
+    <div id="div_diaMes"></div>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function sortearLua(){
+        let aleatorio = Math.random();
+
+        let diaMes = (aleatorio * 30 + 1).toFixed();
+
+        div_diaMes.innerHTML = `Dia do Mês: ${diaMes}`;
+
+        if(diaMes <= 7){
+            div_mensagem.innerHTML = `<img src="https://img.freepik.com/fotos-gratis/fotografia-em-close-up-da-lua-crescente_181624-43715.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        }else if(diaMes <= 16){
+            div_mensagem.innerHTML = `<img src="https://thumbs.dreamstime.com/b/detalhe-da-lua-cheia-56579270.jpg" alt="">`
+        }else if(diaMes <= 22){
+            div_mensagem.innerHTML = `<img src="https://scc10.com.br/wp-content/uploads/2026/03/Lua-minguante-na-sexta-feira-13-entenda-o-que-significa.webp" alt="">`
+        }else if(diaMes <= 31){
+            div_mensagem.innerHTML = `<img src="https://media.istockphoto.com/id/1493642908/pt/foto/phases-of-the-moon-waning-gibbous.jpg?s=612x612&w=0&k=20&c=S25WOrsB0C9kIyT7MLpcCMsZ_XK1tBRYa-IFi5xdX_Q=" alt="">`
+        }
+    }
+
+</script>

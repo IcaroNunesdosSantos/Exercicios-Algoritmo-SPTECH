@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o nome do jogo de tabuleiro:
+    <input type="text" id="ipt_jogo"> <br><br>
+
+    Informe a quantidade de jogadores:
+    <input type="text" id="ipt_qtdJogadores"> <br><br>
+
+    <button onclick="cadastrar()">Cadastrar Jogo</button>
+    <button onclick="listar()">Listar Jogos</button> <br><br>
+
+    filtro por quantidade de jogadores:
+    <input type="text" id="ipt_filtro">
+    <button onclick="filtrar()">filtrar por jogadores</button>
+    <hr>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    let listaJogos = [];
+    let jogo;
+
+    function cadastrar(){
+        jogo = {
+            nome: ipt_jogo.value,
+            qtdJogadores: ipt_qtdJogadores.value
+        }
+
+        listaJogos.push(jogo);
+    }
+
+    function listar(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaJogos.length; i++){
+            let jogoAtual = listaJogos[i]
+
+            mensagem += ` <br>
+               ${i+1}. Jogo: ${jogoAtual.nome}, Quantidade de jogadores: ${jogoAtual.qtdJogadores} <br>
+            `
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar(){
+        let filtro = ipt_filtro.value;
+        let mensagem = '';
+
+        for(i = 0; i < listaJogos.length; i++){
+            let jogoAtual = listaJogos[i]
+
+            if(jogoAtual.qtdJogadores == filtro){
+                mensagem += ` <br>
+                    ${i+1}. Jogo: ${jogoAtual.nome}, Quantidade de jogadores: ${jogoAtual.qtdJogadores} <br>
+                `
+            }
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+</script>
